@@ -1,15 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, ActivityIndicator } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import car from './assets/images/car.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,4 +10,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  logo: {
+    width: 200,
+    height: 150,
+    resizeMode: 'contain',
+  },
+  indicator: {
+    paddingBottom: 15
+  },
+  loadingText: {
+    paddingTop: 5,
+    fontSize: 16
+  }
 });
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Hello from Car Catalog app!</Text>
+      <Image
+        style={styles.logo}
+        source={car}
+      />
+      <View style={styles.indicator}>
+        <ActivityIndicator size="large"/>
+        <Text style={styles.loadingText}>Loading..</Text>
+      </View>
+    </View>
+  );
+}
