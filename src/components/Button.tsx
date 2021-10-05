@@ -3,8 +3,19 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 export type ButtonProps = {
     title: string;
-    btnColor?: string;
+    appearance?: string;
     onPress?: () => void;
+}
+
+export default function Button({ title, appearance, onPress }: ButtonProps) {
+  const lightStyle = appearance === 'light';
+  return <View>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.button, lightStyle && styles.buttonLight]}>
+      <Text style={lightStyle ? styles.text : styles.textLight}>{title}</Text>
+    </TouchableOpacity>
+  </View>;
 }
 
 const styles = StyleSheet.create({
@@ -36,17 +47,3 @@ const styles = StyleSheet.create({
     fontSize: 16
   }
 });
-
-
-export default function Button(props: ButtonProps) {
-  const { title, btnColor, onPress } = props;
-  const light = btnColor === 'light';
-  const color = light ? styles.text : styles.textLight
-  return <View>
-    <TouchableOpacity
-      onPress={onPress}
-      style={[styles.button, light && styles.buttonLight]}>
-        <Text style={color}>{title}</Text>
-    </TouchableOpacity>
-  </View>;
-}

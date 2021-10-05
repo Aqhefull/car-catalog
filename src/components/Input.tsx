@@ -1,7 +1,37 @@
 import React from 'react';
 import { View, StyleSheet, TextInput } from 'react-native';
 
+export type InputProps = {
+  value: string
+  onChange: (text: string) => void
+  placeholder: string,
+  editable?: boolean,
+  children?: JSX.Element
+}
+
+export default function Input({ value, onChange, placeholder, editable, children }: InputProps) {
+  return (
+    <View>
+      {children && <View style={styles.container}>
+        {children}
+      </View>}
+      <TextInput
+        placeholder={placeholder}
+        style={[styles.input, children && styles.withIcon]}
+        onChangeText={text => onChange(text)}
+        value={value}
+        editable={editable}
+      />
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
+  container: {
+    position: 'absolute', 
+    top: 10, 
+    left: 15
+  },
   input: {
     borderTopWidth: 0,
     borderRightWidth: 0,
@@ -18,30 +48,3 @@ const styles = StyleSheet.create({
     paddingLeft: 35
   }
 });
-
-export type InputProps = {
-  value: string
-  onChange: any
-  placeholder: string,
-  editable?: boolean,
-  children?: any
-}
-
-export default function Input(props: InputProps) {
-  const { value, onChange, placeholder, editable, children: Icon } = props;
-  return (
-    <View>
-      <View style={{position: 'absolute', top: 10, left: 15}}>
-        {Icon && Icon}
-      </View>
-      <TextInput
-        placeholder={placeholder}
-        style={[styles.input, Icon && styles.withIcon]}
-        onChangeText={text => onChange(text)}
-        value={value}
-        editable={editable}
-      />
-    </View>
-  );
-}
-

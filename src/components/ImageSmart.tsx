@@ -1,5 +1,20 @@
 import React from 'react';
-import { View, StyleSheet, Platform, Image } from 'react-native';
+import { View, StyleSheet, Platform, Image, StyleProp, ImageStyle } from 'react-native';
+
+export type LogoProps = {
+    logo: keyof JSX.IntrinsicElements,
+    style?: StyleProp<ImageStyle>
+}
+
+export default function ImageSmart({logo: Logo, style = {}}: LogoProps) {
+  return <View style={styles.container}>
+    {
+      Platform.OS === 'web' ? 
+        <Image style={[styles.logo, style]} source={{uri: Logo}} /> : 
+        <View style={[styles.logo, style]}><Logo/></View>
+    }
+  </View>;
+}
 
 const styles = StyleSheet.create({
   logo: {
@@ -15,19 +30,3 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
 });
-
-export type LogoProps = {
-    logo: any,
-    style?: any
-}
-
-export default function ImageSmart(props: LogoProps) {
-  const {logo: Logo, style} = props;
-  return <View style={styles.container}>
-    {
-      Platform.OS === 'web' ? 
-        <Image style={[styles.logo, style && style]} source={{uri: Logo}} /> : 
-        <Logo style={{...styles.logo, ...style}} />
-    }
-  </View>;
-}
