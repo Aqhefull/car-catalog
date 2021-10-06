@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
+import { Entypo } from '@expo/vector-icons';
 import { StyleSheet, View, Text, Animated, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import { useNavigation, StackActions } from '@react-navigation/native';
+import routes from '../../constants/routes';
 
 import Button from '../../components/Button';
 import ImageSmart from '../../components/ImageSmart';
 import Input from '../../components/Input';
 
 import Logo from '../../../assets/images/Logo.svg';
-import { Entypo } from '@expo/vector-icons';
-  
-export default function Login() {
+
+export default function LoginScreen() {
+  const navigation = useNavigation();
   const [login, setLogin] = useState('');
   const [loginVisible, setLoginVisible] = useState(false);
   const [password, setPassword] = useState('');
@@ -33,6 +36,9 @@ export default function Login() {
   };
 
   const signInHandler = () => {
+    if(loginVisible) {
+      navigation.dispatch(StackActions.replace(routes.tabs));
+    }
     setLoginVisible(!loginVisible);
     runAnimations();
   };

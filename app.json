@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "car-catalog",
-    "slug": "car-catalog",
+    "name": "CarCatalog",
+    "slug": "carcatalog",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -43,6 +43,8 @@
         "wasm",
         "svg"
       ]
-    }
+    },
+    "description": "React Native internal project",
+    "githubUrl": "https://github.com/Aqhefull/car-catalog/"
   }
 }
