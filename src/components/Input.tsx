@@ -1,23 +1,23 @@
 import React from 'react';
 import { View, StyleSheet, TextInput } from 'react-native';
 
-export type InputProps = {
+type InputProps = {
   value: string
   onChange: (text: string) => void
   placeholder: string,
   editable?: boolean,
-  children?: JSX.Element
+  icon?: JSX.Element
 }
 
-export default function Input({ value, onChange, placeholder, editable, children }: InputProps) {
+export default function Input({ value, onChange, placeholder, editable, icon }: InputProps) {
   return (
     <View>
-      {children && <View style={styles.container}>
-        {children}
+      {icon && <View style={styles.container}>
+        {icon}
       </View>}
       <TextInput
         placeholder={placeholder}
-        style={[styles.input, children && styles.withIcon]}
+        style={[styles.input, icon && styles.withIcon]}
         onChangeText={text => onChange(text)}
         value={value}
         editable={editable}
@@ -38,10 +38,8 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     borderBottomWidth: 2,
     borderColor: '#ccc',
-    paddingTop: 15,
-    paddingBottom: 15,
-    marginLeft: 15,
-    marginRight: 15,
+    paddingVertical: 15,
+    marginHorizontal: 15,
     color: '#000'
   },
   withIcon: {

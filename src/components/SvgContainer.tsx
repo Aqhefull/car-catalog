@@ -6,7 +6,7 @@ export type LogoProps = {
     style?: StyleProp<ImageStyle>
 }
 
-export default function ImageSmart({logo: Logo, style = {}}: LogoProps) {
+export default function SvgContainer({logo: Logo, style = {}}: LogoProps) {
   return <View style={styles.container}>
     {
       Platform.OS === 'web' ? 

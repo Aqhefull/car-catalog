@@ -48,7 +48,7 @@ export default function TabBar({ state, descriptors, navigation }: BottomTabBarP
             style={{ flex: 1, alignItems:'center' }}
           >
             <TabIcon {...tabIconProps}/>
-            <Text style={[styles.text, {color: isFocused ? '#8A8A8E' : '#222'}]}>
+            <Text style={[styles.text, {color: isFocused ? '#222' : '#9E9E9E'}]}>
               {label}
             </Text>
           </TouchableOpacity>

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
-export type ButtonProps = {
+type ButtonProps = {
     title: string;
     appearance?: string;
     onPress?: () => void;
 }
 
-export default function Button({ title, appearance, onPress }: ButtonProps) {
+export default function Button({ title, appearance = 'primary', onPress }: ButtonProps) {
   const lightStyle = appearance === 'light';
   return <View>
     <TouchableOpacity
@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#000',
     marginTop: 20,
-    marginLeft: 15,
-    marginRight: 15,
+    marginHorizontal: 15
   },
   buttonLight: {
     backgroundColor: '#fff',

@@ -5,7 +5,7 @@ import { useNavigation, StackActions } from '@react-navigation/native';
 import routes from '../../constants/routes';
 
 import Button from '../../components/Button';
-import ImageSmart from '../../components/ImageSmart';
+import SvgContainer from '../../components/SvgContainer';
 import Input from '../../components/Input';
 
 import Logo from '../../../assets/images/Logo.svg';
@@ -46,16 +46,24 @@ export default function LoginScreen() {
   return (
     <View style={styles.login}>
       <Animated.View style={{ transform: [{scale: animatedScalePress }]}}>
-        <ImageSmart logo={Logo}/>
+        <SvgContainer logo={Logo}/>
       </Animated.View>
       <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}> 
         <Animated.View style={[styles.loginForm, { opacity: animatedOpacityForm}]}>  
-          <Input value={login} placeholder="Username" onChange={(value: string) => setLogin(value)} editable={loginVisible}>
-            <Entypo name="user" size={25} color="#000" />
-          </Input>
-          <Input value={password} placeholder="Password" onChange={(value: string) => setPassword(value)} editable={loginVisible}>
-            <Entypo name="lock" size={25} color="#000" />
-          </Input>
+          <Input 
+            value={login} 
+            placeholder="Username" 
+            onChange={(value: string) => setLogin(value)} 
+            editable={loginVisible} 
+            icon={<Entypo name="user" size={25} color="#000" />}
+          />
+          <Input 
+            value={password} 
+            placeholder="Password" 
+            onChange={(value: string) => setPassword(value)} 
+            editable={loginVisible} 
+            icon={<Entypo name="lock" size={25} color="#000" />}
+          />
         </Animated.View>
       </TouchableWithoutFeedback>
       <View style={styles.controls}>

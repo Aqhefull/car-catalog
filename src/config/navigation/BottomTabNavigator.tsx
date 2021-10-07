@@ -77,7 +77,7 @@ export default function BottomTabNavigator() {
             name={name}
             component={component}
             options={{
-              tabBarIcon: ({ focused }: { focused: boolean }) => <MaterialIcons color={focused ? '#9E9E9E' : '#000'} size={tabBarIcon.size} name={tabBarIcon.name} />,
+              tabBarIcon: ({ focused }: { focused: boolean }) => <MaterialIcons color={focused ? '#222' : '#9E9E9E'} size={tabBarIcon.size} name={tabBarIcon.name} />,
               headerRight: () => (
                 <View style={styles.headerRight}>
                   <MaterialIcons size={30} name="logout" onPress={logOutHandler}/>
