@@ -1,12 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Platform, Image, StyleProp, ImageStyle } from 'react-native';
+import { View, StyleSheet, Platform, Image } from 'react-native';
+import useThemeStyleSheet from '../../hooks/useThemeStylesheet';
 
-export type LogoProps = {
-    logo: keyof JSX.IntrinsicElements,
-    style?: StyleProp<ImageStyle>
-}
-
-export default function SvgContainer({logo: Logo, style = {}}: LogoProps) {
+const SvgContainer: React.FC<LogoProps> = ({logo: Logo, style = {}}) => {
+  const styles = useThemeStyleSheet(_styles);
   return <View style={styles.container}>
     {
       Platform.OS === 'web' ? 
@@ -14,19 +11,21 @@ export default function SvgContainer({logo: Logo, style = {}}: LogoProps) {
         <View style={[styles.logo, style]}><Logo/></View>
     }
   </View>;
-}
+};
 
-const styles = StyleSheet.create({
+const _styles = (theme: any) => StyleSheet.create({
   logo: {
     resizeMode: 'contain',
     width: 300,
     height: 300
   },
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.ACCENT,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row'
   },
 });
+
+export default SvgContainer;

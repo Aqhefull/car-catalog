@@ -1,20 +1,16 @@
 import React from 'react';
 import { View, StyleSheet, TextInput } from 'react-native';
+import useThemeStyleSheet from '../../hooks/useThemeStylesheet';
 
-type InputProps = {
-  value: string
-  onChange: (text: string) => void
-  placeholder: string,
-  editable?: boolean,
-  icon?: JSX.Element
-}
-
-export default function Input({ value, onChange, placeholder, editable, icon }: InputProps) {
+const Input: React.FC<InputProps> = ({ value, onChange, placeholder, editable, icon }) => {
+  const styles = useThemeStyleSheet(_styles);
   return (
     <View>
-      {icon && <View style={styles.container}>
-        {icon}
-      </View>}
+      {icon && (
+        <View style={styles.container}>
+          {icon}
+        </View>
+      )}
       <TextInput
         placeholder={placeholder}
         style={[styles.input, icon && styles.withIcon]}
@@ -24,9 +20,9 @@ export default function Input({ value, onChange, placeholder, editable, icon }: 
       />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
+const _styles = (theme: any) => StyleSheet.create({
   container: {
     position: 'absolute', 
     top: 10, 
@@ -37,12 +33,14 @@ const styles = StyleSheet.create({
     borderRightWidth: 0,
     borderLeftWidth: 0,
     borderBottomWidth: 2,
-    borderColor: '#ccc',
+    borderColor: theme.colors.ADDITIONAL,
     paddingVertical: 15,
     marginHorizontal: 15,
-    color: '#000'
+    color: theme.colors.PRIMARY
   },
   withIcon: {
     paddingLeft: 35
   }
 });
+
+export default Input;

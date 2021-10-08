@@ -1,12 +1,12 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginScreen from '../../modules/login/LoginScreen';
-import routes from '../../constants/routes';
-import BottomTabNavigator from './BottomTabNavigator';
+import LoginScreen from '../../../modules/LoginScreen';
+import { routes } from '../../../constants';
+import BottomTabNavigator from './../BottomTabNavigator';
 
 const Stack = createNativeStackNavigator();
 
-export default function RootNavigator() {
+const RootNavigator: React.FC = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={routes.login}>
       <Stack.Screen 
@@ -19,4 +19,6 @@ export default function RootNavigator() {
       />
     </Stack.Navigator>
   );
-}
+};
+
+export default RootNavigator;

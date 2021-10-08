@@ -2,8 +2,10 @@ import React from 'react';
 import { StyleSheet, View, Image} from 'react-native';
 import carImage from '../../../assets/images/car1.jpg';
 import { MaterialIcons } from '@expo/vector-icons';
+import useThemeStyleSheet from '../../hooks/useThemeStylesheet';
 
-export default function CarSwiperScreen() {
+const CarSwiperScreen: React.FC = () => {
+  const styles = useThemeStyleSheet(_styles);
   return (
     <View style={styles.container}>
       <View style={styles.mainImageWrap}>
@@ -22,9 +24,9 @@ export default function CarSwiperScreen() {
       </View>
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
+const _styles = (theme: any) => StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
@@ -38,7 +40,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#000',
+    borderColor: theme.colors.PRIMARY,
     borderWidth: 3,
   },
   mainImage: {
@@ -56,3 +58,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   }
 });
+
+export default CarSwiperScreen;

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 
-export default function CarListScreen() {
+const ProfileScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text>
-        CarListScreen
+        ProfileScreen
       </Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -18,3 +18,5 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 });
+
+export default ProfileScreen;
