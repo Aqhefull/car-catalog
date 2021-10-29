@@ -1,18 +1,18 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Login from './src/modules/login/Login';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Navigation from './src/config/navigation';
+import { ThemeProvider } from './src/context/providers/ThemeProvider';
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    flex: 1,
-  }
-});
-
-export default function App() {
+function App() {
   return (
-    <View style={styles.container}>
-      <Login/>
-    </View>
+    <ThemeProvider>
+      <SafeAreaProvider>
+        <Navigation/>
+        <StatusBar/>
+      </SafeAreaProvider>
+    </ThemeProvider>
   );
 }
+
+export default App;
