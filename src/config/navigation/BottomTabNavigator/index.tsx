@@ -20,7 +20,7 @@ const BottomTabNavigator: React.FC = () => {
   };
   return (
     <BottomTab.Navigator
-      initialRouteName={routes.tabs}
+      initialRouteName={routes.profile}
       screenOptions={{
         tabBarStyle: {
           paddingBottom: 10,

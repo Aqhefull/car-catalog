@@ -1,21 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, TextInput } from 'react-native';
 import useThemeStyleSheet from '../../hooks/useThemeStylesheet';
 
-const Input: React.FC<InputProps> = ({ value, onChange, placeholder, editable, icon }) => {
+const Input: React.FC<InputProps> = ({ value, onChangeText, placeholder, editable, icon, inputRef, rule, style }) => {
   const styles = useThemeStyleSheet(_styles);
+  const [isError, setIsError] = useState(false);
+
+  const _onChangeText = (value: string) => {
+    onChangeText && onChangeText(value);
+    setIsError(!rule.test(value));
+  };
+
   return (
-    <View>
+    <View style={styles.container}>
       {icon && (
-        <View style={styles.container}>
+        <View style={styles.iconWrap}>
           {icon}
         </View>
       )}
       <TextInput
         placeholder={placeholder}
-        style={[styles.input, icon && styles.withIcon]}
-        onChangeText={text => onChange(text)}
+        style={[
+          styles.textInput, 
+          icon && styles.withIcon,
+          isError && styles.errorStyle,
+          style
+        ]}
+        onChangeText={_onChangeText}
         value={value}
+        ref={inputRef}
         editable={editable}
       />
     </View>
@@ -24,11 +37,17 @@ const Input: React.FC<InputProps> = ({ value, onChange, placeholder, editable, i
 
 const _styles = (theme: any) => StyleSheet.create({
   container: {
+    width: '90%'
+  },
+  errorStyle: {
+    borderColor: theme.colors.ERROR,
+  },
+  iconWrap: {
     position: 'absolute', 
     top: 10, 
     left: 15
   },
-  input: {
+  textInput: {
     borderTopWidth: 0,
     borderRightWidth: 0,
     borderLeftWidth: 0,

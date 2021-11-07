@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 
 const RootNavigator: React.FC = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={routes.login}>
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={routes.tabs}>
       <Stack.Screen 
         name={routes.login} 
         component={LoginScreen} 

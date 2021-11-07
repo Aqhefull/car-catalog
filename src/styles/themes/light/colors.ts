@@ -14,5 +14,5 @@ export const colors = {
 
   PRIMARY: BLACK,
   ACCENT: WHITE,
-  ADDITIONAL: GRAY
+  ADDITIONAL: GRAY,
 };
